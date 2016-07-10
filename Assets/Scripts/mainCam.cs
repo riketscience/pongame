@@ -3,18 +3,19 @@ using System.Collections;
 
 public class mainCam : MonoBehaviour {
 
-	public float moveRate; 
-	private int startat = -22;
 	public GameObject focalPoint;
-    public Camera mainCamera;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		startat-=1;
-        mainCamera.transform.position = new Vector3(0, 0, startat );
+    private float speedMod = 0.25f;
+    private Vector3 point;
+
+    void Start()
+    {
+        point = focalPoint.transform.position;  //get target's coords
+        transform.LookAt(point);                //and make camera look to it 
+    }
+
+    void Update()
+    {
+        //make the camera rotate around "point" coords, rotating around its Y axis, 20 degrees per second times the speed modifier
+        transform.RotateAround(point, new Vector3(0.0f,1.0f,1.0f), 20 * Time.deltaTime * speedMod);
     }
 }
