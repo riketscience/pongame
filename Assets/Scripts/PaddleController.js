@@ -1,7 +1,7 @@
 ﻿var ypos:float;
 var zpos:float = 0;
 var xboundary:float = -12.5;
-var speed:float = 80;
+var speed:float;
 var maxbound:float = 20.0;
 var roofPrefab:GameObject;
 var roofRigidbody:Rigidbody;
